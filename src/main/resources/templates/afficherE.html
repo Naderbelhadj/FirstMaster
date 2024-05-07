@@ -1,0 +1,25 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<h2>Hello from afficher</h2>
+<a href="/etudiant/add" class="btn btn-success">page ajout</a>
+<table class="table">
+	<thead class="table-info">
+	<td>identifiant</td>
+	<td>Nom</td>
+	<td>Prenom</td>
+	<td>Email</td>
+	<td>Classe</td>
+	<td>Suppression</td>
+	<td>Modification</td>
+	</thead>
+	
+	<tr th:each="e : ${etudiants}">
+		<td th:text="${e.id}"></td>
+		<td th:text="${e.nom}"></td>
+		<td th:text="${e.prenom}"></td>
+		<td th:text="${e.email}"></td>
+		<td th:text="${e.classe.nom}"></td>
+	
+		  <td><a th:href="@{/etudiant/supprimer/{id}(id=${e.id})}" class="btn btn-danger">supprimer</td>
+		    <td><a th:href="@{/etudiant/modifier/{id}(id=${e.id})}" class="btn btn-warning">modifier</td>
+	</tr>
+</table>
